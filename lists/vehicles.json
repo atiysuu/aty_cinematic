@@ -1,0 +1,32 @@
+[
+  {
+    "name": "zentorno",
+    "label": "Pegassi Zentorno (super)",
+    "label_tr": "Pegassi Zentorno (süper)"
+  },
+  {
+    "name": "adder",
+    "label": "Truffade Adder (super)",
+    "label_tr": "Truffade Adder (süper)"
+  },
+  {
+    "name": "comet2",
+    "label": "Pfister Comet (sports)",
+    "label_tr": "Pfister Comet (spor)"
+  },
+  {
+    "name": "schafter3",
+    "label": "Benefactor Schafter V12 (sedan)",
+    "label_tr": "Benefactor Schafter V12 (sedan)"
+  },
+  {
+    "name": "baller4",
+    "label": "Gallivanter Baller LE (SUV)",
+    "label_tr": "Gallivanter Baller LE (SUV)"
+  },
+  {
+    "name": "police3",
+    "label": "Police cruiser",
+    "label_tr": "Polis aracı"
+  }
+]

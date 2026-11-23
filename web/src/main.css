@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import "./aty-ui.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font);
+  user-select: none;
+  text-decoration: none;
+  outline: none;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* In-game NUI: the panel carries its own background. */
+  background: transparent;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   ATY UI v3 tokens
+   The old variable names in this file (--bg-surface, --text-primary ...) were not removed
+   but MAPPED to their v3 equivalents. A lot of existing CSS uses them; renaming would mean
+   going through every component. This way one file moves the whole interface to the new
+   palette, radii and typography.
+   ════════════════════════════════════════════════════════════════════ */
+:root {
+  --font: "Outfit", sans-serif;
+
+  /* Surfaces: "dark glass", not absolute black.
+   On pure black the panels look heavy; with this family the weak spots IMPROVE
+   (--text-4 contrast 2.04 -> 2.26, --surface-2 against the background 1.046 -> 1.074).
+   The main text stays at 17.96:1, so no readability is lost, only excess contrast.
+   Set in one place: the five values below drive the whole interface. */
+  --bg: #101317;
+  --panel: #14171c;
+  --panel-alt: #181c23;
+  --chrome-90: rgba(20, 23, 28, 0.9);
+  --chrome-75: rgba(20, 23, 28, 0.78);
+  /* the menu has to be one tone lighter than the panel so it stands out on top of it */
+  --menu-bg: rgba(26, 30, 37, 0.98);
+
+  --surface-1: rgba(255, 255, 255, 0.02);
+  --surface-2: rgba(255, 255, 255, 0.03);
+  --surface-3: rgba(255, 255, 255, 0.05);
+  --surface-4: rgba(255, 255, 255, 0.08);
+  --stroke-1: rgba(255, 255, 255, 0.05);
+  --stroke-2: rgba(255, 255, 255, 0.1);
+
+  /* One accent + status colours */
+  --accent: #69ffec;
+  --accent-soft: rgba(105, 255, 236, 0.15);
+  --accent-rgb: 105, 255, 236;
+  --danger: #ff4e4e;
+  --danger-soft: rgba(255, 78, 78, 0.15);
+  --warn: #ffd166;
+  --warn-soft: rgba(255, 209, 102, 0.15);
+  --success: #35d979;
+  --success-soft: rgba(53, 217, 121, 0.15);
+  --info: #60a5fa;
+  --info-soft: rgba(96, 165, 250, 0.15);
+
+  --text-1: #ffffff;
+  --text-2: rgba(255, 255, 255, 0.8);
+  --text-3: rgba(255, 255, 255, 0.5);
+  --text-4: rgba(255, 255, 255, 0.25);
+
+  /* Radius: everything is close to a pill */
+  --r-pill: 42px;
+  --r-btn: 36px;
+  --r-card: 32px;
+  --r-field: 29px;
+  --r-modal: 24px;
+  --r-panel: 20px;
+  --r-inner: 16px;
+  --r-sm: 10px;
+  --r-tile: 8px;
+  --r-badge: 4px;
+
+  --ease-spring: cubic-bezier(0.34, 1.18, 0.44, 1);
+  --ease-spring-soft: cubic-bezier(0.3, 1.05, 0.4, 1);
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-glass: cubic-bezier(0.32, 1.42, 0.5, 1);
+  --shadow-menu: 0 12px 30px rgba(0, 0, 0, 0.45);
+
+  --z-hud: 30;
+  --z-panel: 40;
+  --z-menu: 94;
+  --z-modal: 95;
+  --z-toast: 130;
+  --z-radial: 140;
+  --z-loading: 150;
+
+  /* Old names -> v3 equivalents */
+  --accent-dim: var(--accent-soft);
+  --bg-base: var(--panel);
+  --bg-surface: var(--panel);
+  --bg-elevated: var(--surface-3);
+  --text-primary: var(--text-1);
+  --text-secondary: var(--text-3);
+  --text-muted: var(--text-4);
+  --border: var(--stroke-1);
+  --border-focus: var(--accent-soft);
+}
+
+/* Typography base
+   v3: no uppercase anywhere, weights 400-500, tabular numbers. */
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font);
+  font-weight: 400;
+  color: var(--text-2);
+}
+
+input,
+textarea {
+  user-select: text;
+}
+
+/* Descenders must not be clipped in type above 20px. */
+h1,
+h2,
+h3 {
+  line-height: 1.16;
+  font-weight: 500;
+}
+
+/* The old .btn, brought into the v3 language */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-2);
+  background: var(--surface-3);
+  border: 1px solid var(--stroke-1);
+  border-radius: var(--r-field);
+  cursor: pointer;
+  transition:
+    background 0.18s var(--ease-out),
+    border-color 0.18s var(--ease-out),
+    color 0.18s var(--ease-out),
+    transform 0.14s var(--ease-out);
+}
+
+.btn:hover {
+  color: var(--text-1);
+  background: var(--surface-4);
+  border-color: var(--stroke-2);
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn.primary {
+  /* Text on the accent colour is always black. */
+  color: #000;
+  background: var(--accent);
+  border-color: transparent;
+  font-weight: 500;
+}
+
+.btn.primary:hover {
+  background: var(--accent);
+  filter: brightness(1.08);
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+/* Scrollbar: 4px, transparent track */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Layer scale
+   The kit's --z-* tokens end at 150; a NUI may need a much wider scale. Pick the band for a
+   new layer from here:
+       500      labels over the world, below the panels
+       1000     bottom panels (dock + control bar)
+       9998-9999    tool overlays
+       99997-99999  full-screen menus and modals
+       200000   #stage: the layer of teleported modals
+       300000   loading screen, blocks everything
+       999999   drag ghost, follows the cursor, on top of everything */
+
+/* Modal layer
+   The kit's modals are teleported to the #stage root. Because #stage carries the layer, a
+   modal's own z value no longer competes with the application. The drag ghost (999999) is
+   higher on purpose: a preview that follows the cursor has to stay above an open modal. */
+#stage {
+  position: fixed;
+  inset: 0;
+  z-index: 200000;
+  /* When the layer is empty, clicks have to reach the game. Children turn their own
+   pointer-events back on. */
+  pointer-events: none;
+}
+
+#stage > * {
+  pointer-events: auto;
+}
+
+/* The backdrop of a closed modal covers the whole screen; it must not swallow clicks. */
+#stage > .ui-modal-back:not(.show) {
+  pointer-events: none;
+}

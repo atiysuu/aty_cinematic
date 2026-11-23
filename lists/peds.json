@@ -1,0 +1,32 @@
+[
+  {
+    "name": "a_m_y_business_03",
+    "label": "Businessman",
+    "label_tr": "İş adamı"
+  },
+  {
+    "name": "a_f_y_business_02",
+    "label": "Businesswoman",
+    "label_tr": "İş kadını"
+  },
+  {
+    "name": "s_m_m_highsec_01",
+    "label": "Bodyguard in a suit",
+    "label_tr": "Takım elbiseli koruma"
+  },
+  {
+    "name": "a_m_y_hipster_01",
+    "label": "Young man (casual)",
+    "label_tr": "Genç adam (günlük)"
+  },
+  {
+    "name": "a_f_y_bevhills_01",
+    "label": "Stylish woman",
+    "label_tr": "Şık kadın"
+  },
+  {
+    "name": "s_m_y_cop_01",
+    "label": "Police officer",
+    "label_tr": "Polis"
+  }
+]

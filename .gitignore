@@ -1,0 +1,9 @@
+# interface build dependencies
+web/node_modules/
+
+# saved projects and takes are per server; the KEEP files keep the folders (the server cannot create them)
+data/index.json
+data/projects/*
+!data/projects/KEEP
+data/takes/*
+!data/takes/KEEP
